@@ -1,0 +1,13 @@
+# Binaries:
+/_build
+*.ez
+/silesian_beamers_survey
+
+# Dependencies:
+/deps
+
+# Dumps:
+/priv/*.json
+
+# Crash dumps:
+erl_crash.dump
