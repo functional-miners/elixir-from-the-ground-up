@@ -11,3 +11,6 @@
 
 # Crash dumps:
 erl_crash.dump
+
+# Workshop
+.workshop/state.exs
