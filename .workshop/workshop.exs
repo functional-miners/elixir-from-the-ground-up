@@ -19,12 +19,13 @@ defmodule Workshop.Meta do
   # An optional short description of the workshop. Will get shown at places
   # where the long description would not fit, such as the `mix workshop` screen.
   # Set this to `false` if you want to suppress the missing shortdesc warning.
-  @shortdesc nil
+  @shortdesc "SilesianBEAMers introduction to Elixir workshop"
 
   # The description should state what the user will learn from this workshop.
   # Perhaps mention the intended audience.
   @description """
-  Describe the workshop here.
+  This workshop will introduce you to the basics of the Elixir programming
+  language through couple simple exercises.
   """
 
   # The introduction should welcome the user to the workshop, set the
