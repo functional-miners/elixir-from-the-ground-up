@@ -1,7 +1,7 @@
 defmodule Workshop.Exercise.CsvCheck do
   use Workshop.Validator
 
-  def tmp_path do
+  defp tmp_path do
     case Workshop.locate_root do
       {:ok, root, _exercise} ->
         Path.join(root, "tmp")
@@ -12,7 +12,7 @@ defmodule Workshop.Exercise.CsvCheck do
     end
   end
 
-  defmacro in_tmp(fun) do
+  defmacrop in_tmp(fun) do
     path = Path.join([tmp_path, "#{__CALLER__.module}", "#{elem(__CALLER__.function, 0)}"])
     quote do
       path = unquote(path)
@@ -22,7 +22,7 @@ defmodule Workshop.Exercise.CsvCheck do
     end
   end
 
-  def with_tmp_file(content, fun) do
+  defp with_tmp_file(content, fun) do
     in_tmp(fn path ->
       file = Path.join(path, "test.csv")
       File.write!(file, content)

@@ -20,7 +20,37 @@ defmodule Workshop.Exercise.Csv do
      def parse(filename), do: parse(filename, [])
      def parse(filename, opts), do: #...
 
-  # What's next?
+  ## Streams
+
+  While all operations in `Enum` module are eager (they iterate through whole
+  collection right away), the ones in `Stream` module are lazy (processed one
+  by one).
+
+  Streams are executed when passed to the `Stream.run/1` function or when
+  passed to one of the functions in the `Enum` module.
+
+  Streams work not only with regular collections, but also with resources
+  like files, database coursors, and others.
+
+  Try using a streaming solution!
+
+  ## Keywords
+
+  Most often additional options are passed to functions as keywords.
+
+  Keywords are lists of two element tuples, where first element is an atom, and
+  the second one is any term.
+
+  Because keywords are so common, Elixir has special syntactic sugar for them:
+
+     [{:key, "value"}] == [key: "value"]
+
+  When a keyword list is a last argument to a function brackets can be ommited:
+
+     String.split(string, trim: true)
+
+  ## What's next?
+
   Get the task for this exercise by executing `mix workshop.task`. When you are
   done writing a solution it can be checked and verified using the
   `mix workshop.check` command.
