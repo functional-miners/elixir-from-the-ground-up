@@ -1,21 +1,23 @@
 # Elixir from the ground up - Workshops
 
-Workshop
---------
+This workshop will introduce you to the basics of the Elixir programming
+language through couple simple exercises.
+
+## Workshop
 To run this workshop you will need the workshop mix tasks to be
 installed.
 
 ```shell
-git clone https://github.com/gausby/workshop.git
-cd workshop
-mix archive.build
-mix archive.install
+git clone https://github.com/silesian-beamers/elixir-from-the-ground-up
+cd elixir-from-the-ground-up
+mix archive.install workshop-0.5.1.ez
 ```
 
 The workshop tasks should now be available and you are ready to
 run the workshop.
 
-What's next?
-------------
+You can check if you have everything set up correctly with `mix workshop.doctor`.
+
+## What's next?
 Type `mix workshop.next` in the terminal to start the workshop, and
 have fun!

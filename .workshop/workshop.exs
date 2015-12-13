@@ -14,7 +14,7 @@ defmodule Workshop.Meta do
   # types `mix workshop.help`
   #
   # ie: `https://github.com/foo/bar` becomes `https://github.com/foo/bar/issues`
-  @home nil
+  @home "https://github.com/silesian-beamers/elixir-from-the-ground-up"
 
   # An optional short description of the workshop. Will get shown at places
   # where the long description would not fit, such as the `mix workshop` screen.
