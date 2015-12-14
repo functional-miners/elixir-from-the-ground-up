@@ -12,6 +12,9 @@
 # Crash dumps:
 erl_crash.dump
 
-# Workshop
+# Workshop:
 .workshop/state.exs
 /tmp
+
+# User assignments:
+/0*_*

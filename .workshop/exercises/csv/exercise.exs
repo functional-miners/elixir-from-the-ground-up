@@ -67,7 +67,5 @@ defmodule Workshop.Exercise.Csv do
   and a keyword list of options as a second one.
   """
 
-  @hint [
-    "@todo, write a couple of hints for the solving this exercise"
-  ]
+  @hint []
 end

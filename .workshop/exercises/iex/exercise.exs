@@ -40,6 +40,5 @@ defmodule Workshop.Exercise.Iex do
   * Tru lookup up documentation for the `h` helper command
   """
 
-  @hint [
-  ]
+  @hint []
 end

@@ -54,8 +54,8 @@ defmodule Workshop.Exercise.HelloWorld do
       use the `greeting/1` function to generate name, and print the greeting to the
       console.
 
-    * Make the `greeting/1` function say something special to José
-      Bonus points: don't use `if`, `case`, or `cond`.
+    * Make the `greeting/1` function say something special to José.
+      * Bonus points: don't use `if`, `case`, or `cond`.
 
   """
 
