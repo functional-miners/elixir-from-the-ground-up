@@ -20,7 +20,7 @@ defmodule Rpn do
   end
 
   @binary ~w(+ - * / ^)
-  @unary  ~w(ln log10)
+  @unary  ~w(_ ln log10)
   @reducing ~w(sum prod)
 
   defp do_eval(op, [rhs, lhs | rest]) when op in @binary,
@@ -42,6 +42,7 @@ defmodule Rpn do
 
   defp eval_op("ln",    num), do: :math.log(num)
   defp eval_op("log10", num), do: :math.log10(num)
+  defp eval_op("_",     num), do: -num
 
   defp reduce_op("sum",  stack), do: Enum.reduce(stack, 0, &Kernel.+/2)
   defp reduce_op("prod", stack), do: Enum.reduce(stack, 1, &Kernel.*/2)

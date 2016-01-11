@@ -21,20 +21,20 @@ defmodule Workshop.Exercise.Rpn do
   How to calculate that?
 
   All operations should use stack - first we tokenize the string and extract all tokens separately. By tokens we
-  mean numbers (whole numbers, not digits - operands) and operators. Each of operator has arity - *unary, binary or
-  it is a reducing operator*.
+  mean numbers (whole numbers, not digits - operands) and operators. Each of allowed
+  operators has arity - they are either *unary or binary*.
 
   After extracting list of tokens, we go one by one and if we will find:
 
   * a *number* - we should push it to the stack
-  * an *unary/binary operator* - we should pops as many arguments it requires from the stack, calculate the
+  * an *unary/binary operator* - we should pop as many arguments it requires from the stack, calculate the
     result and push it again on stack
-  * a *reducing operator* - we should take all numbers from stack and apply operator to all of them using *neutral
-    element* as a starting point (e.g. for multiplication, we call `1` a neutral element).
 
   At the end, we should have only one element on the stack which will be the final result.
 
   ## Supported operations
+
+  Numbers can be either integers or decimals.
 
   * Binary operators:
     * Addition `+`
@@ -43,8 +43,14 @@ defmodule Workshop.Exercise.Rpn do
     * Division `/`
     * Power `^`
   * Unary operators:
-    * `ln`
-    * `log10`
+    * Natural logarithm `ln`
+    * Decimal logarithm `log10`
+    * Negation `_`
+
+  As an extra task you can implement the "reducing operators" - they take the whole
+  stack and apply the operation starting with a *neutral elemenet*
+  (e.g. `1` for multiplication)
+
   * Reducing operators:
     * Summation `sum`
     * Product `prod`
@@ -64,10 +70,13 @@ defmodule Workshop.Exercise.Rpn do
 
   @task """
   Create `Rpn.eval/1` function that will accept a string in a form of RPN like `"2 3 +"`,
-  and it will return a result of whole expression as a number - in above case it should return `5`.
+  and it will return the result of evaluation as a number - in above case it should return `5.0`.
   """
 
   @hint [
-    "If you want to implement `ln`, `^` or `log10` you should take a look on *Erlang* `:math` module."
+    "To parse a number you can use `Float.parse/1`",
+    "If you want to implement `ln`, `^` or `log10` you should take a look on *Erlang* `:math` module.",
+    "You can use a list as a stack",
+    "Have a look at `Enum.reduce/2`"
   ]
 end

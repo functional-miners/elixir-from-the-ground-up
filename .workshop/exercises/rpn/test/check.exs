@@ -2,6 +2,7 @@ defmodule Workshop.Exercise.RpnCheck do
   use Workshop.Validator
 
   @simple [
+    {1.0,              "2 _ 3 +"},
     {5.0,              "2 3 +"},
     {87.0,             "90 3 -"},
     {-4.0,             "10 4 3 + 2 * -"},
