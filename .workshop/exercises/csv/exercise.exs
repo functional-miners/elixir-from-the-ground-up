@@ -13,12 +13,12 @@ defmodule Workshop.Exercise.Csv do
 
   Functions can take default arguments - this is done with `\\` operator.
 
-      def parse(filename, opts \\ []), do: #...
+      def parse(filename, opts \\\\ []), do: #...
 
   Such a definition is equivalent to:
 
-     def parse(filename), do: parse(filename, [])
-     def parse(filename, opts), do: #...
+      def parse(filename), do: parse(filename, [])
+      def parse(filename, opts), do: #...
 
   ## Streams
 
@@ -43,11 +43,11 @@ defmodule Workshop.Exercise.Csv do
 
   Because keywords are so common, Elixir has special syntactic sugar for them:
 
-     [{:key, "value"}] == [key: "value"]
+      [{:key, "value"}] == [key: "value"]
 
   When a keyword list is a last argument to a function brackets can be omitted:
 
-     String.split(string, trim: true)
+      String.split(string, trim: true)
 
   ## What's next?
 
