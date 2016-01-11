@@ -1,55 +1,54 @@
+ defmodule Tracer do
+  use GenServer
+
+  def start(), do: GenServer.start(__MODULE__, [])
+
+  def trace(who, modules, functions), do: GenServer.call(who, {:trace, modules, functions})
+  def clear(who), do: GenServer.call(who, :clear)
+
+  def calls(who), do: GenServer.call(who, :get_calls)
+
+  def init([]) do
+    :erlang.trace(:all, true, [:call])
+
+    {:ok, %{ :modules => [], :functions => [], :calls => [] }}
+  end
+
+  def handle_call(:get_calls, _from, state) do
+    {:reply, state[:calls], state}
+  end
+
+  def handle_call({:trace, modules, functions}, _from, state) do
+    for module <- modules do
+      for function <- functions do
+        :erlang.trace_pattern({module, function, :_}, [{:_, [], [{:return_trace}]}])
+      end
+    end
+
+    {:reply, :traced, %{ state | :functions => functions, :modules => modules }}
+  end
+
+  def handle_call(:clear, _from, state) do
+    for module <- state[:modules] do
+      for function <- state[:functions] do
+        :erlang.trace_pattern({module, function, :_}, false)
+      end
+    end
+
+    {:reply, :cleared, %{ state | :functions => [], :modules => [], :calls => [] }}
+  end
+
+  def handle_info({:trace, _, :call, {_mod, call, _args}}, state) do
+    {:noreply, %{ state | :calls => state[:calls] ++ [ call ] }}
+  end
+
+  def handle_info(_, state) do
+    {:noreply, state}
+  end
+end
+
 defmodule Workshop.Exercise.MyEnumCheck do
   use Workshop.Validator
-
-  defmodule Tracer do
-    use GenServer
-
-    def start(), do: GenServer.start(__MODULE__, [])
-
-    def trace(who, modules, functions), do: GenServer.call(who, {:trace, modules, functions})
-    def clear(who), do: GenServer.call(who, :clear)
-
-    def calls(who), do: GenServer.call(who, :get_calls)
-
-    def init([]) do
-      :erlang.trace(:all, true, [:call])
-
-      {:ok, %{ :modules => [], :functions => [], :calls => [] }}
-    end
-
-    def handle_call(:get_calls, _from, state) do
-      {:reply, state[:calls], state}
-    end
-
-    def handle_call({:trace, modules, functions}, _from, state) do
-      for module <- modules do
-        for function <- functions do
-          IO.puts "ON: #{module}.#{function}"
-          a = :erlang.trace_pattern({module, function, :_}, [{:_, [], [{:return_trace}]}])
-          IO.puts "ASSIGNED: #{a}"
-        end
-      end
-
-      {:reply, :traced, %{ state | :functions => functions, :modules => modules }}
-    end
-
-    def handle_call(:clear, _from, state) do
-      for module <- state[:modules] do
-        for function <- state[:functions] do
-          IO.puts "OFF: #{module}.#{function}"
-          :erlang.trace_pattern({module, function, :_}, false)
-        end
-      end
-
-      {:reply, :cleared, %{ state | :functions => [], :modules => [], :calls => [] }}
-    end
-
-    def handle_info({:trace, _, :call, {_mod, call, _args}}, state) do
-      {:noreply, %{ state | :calls => state[:calls] ++ [ call ] }}
-    end
-
-    def handle_info(_, state), do: {:noreply, state}
-  end
 
   defmacrop check_the_same(expected, given) do
     quote do
