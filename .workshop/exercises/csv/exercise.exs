@@ -9,7 +9,7 @@ defmodule Workshop.Exercise.Csv do
   @description """
   In this exercise we will create a simple CSV parser.
 
-  ## Default arguemnts
+  ## Default arguments
 
   Functions can take default arguments - this is done with `\\` operator.
 
@@ -30,7 +30,7 @@ defmodule Workshop.Exercise.Csv do
   passed to one of the functions in the `Enum` module.
 
   Streams work not only with regular collections, but also with resources
-  like files, database coursors, and others.
+  like files, database cursors, and others.
 
   Try using a streaming solution!
 
@@ -45,7 +45,7 @@ defmodule Workshop.Exercise.Csv do
 
      [{:key, "value"}] == [key: "value"]
 
-  When a keyword list is a last argument to a function brackets can be ommited:
+  When a keyword list is a last argument to a function brackets can be omitted:
 
      String.split(string, trim: true)
 
@@ -65,7 +65,22 @@ defmodule Workshop.Exercise.Csv do
   @task """
   Create `Csv.parse/2` function that will take a filename as a first argument,
   and a keyword list of options as a second one.
+
+  Available options which you should implement:
+
+  * `:separator` - setting for a character which separates values in a row.
+  * `:header` - if set, we should treat first row as a header with column names.
+
+  So the example call:
+
+      Csv.parse("file_with_spaces.csv", [{:separator, " "}, {:header, true}])
+
+  Should take care about different separator (in that case - space) and first row
+  which will be a header.
   """
 
-  @hint []
+  @hint [
+    "You can use `String.split/2` when you will read values in the rows.",
+    "Also, helpful function will be a `Keyword.get/3` with option for default value."
+  ]
 end

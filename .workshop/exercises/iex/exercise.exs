@@ -37,7 +37,7 @@ defmodule Workshop.Exercise.Iex do
   @task """
   * Open up IEx and play a little bit with it.
   * Try looking up documentation for `Enum.map`
-  * Tru lookup up documentation for the `h` helper command
+  * Try to lookup up documentation for the `h` helper command
   """
 
   @hint []

@@ -7,7 +7,7 @@ defmodule Workshop.Exercise.HelloWorld do
   @description """
   Hello World!
 
-  In this exercise you will test your Exilir setup and write your first hello
+  In this exercise you will test your Elixir setup and write your first hello
   world program.
 
   In Elixir every named function has to belong to a module. A module is defined

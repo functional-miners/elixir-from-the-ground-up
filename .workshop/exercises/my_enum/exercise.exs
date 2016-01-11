@@ -41,7 +41,7 @@ defmodule Workshop.Exercise.MyEnum do
       iex(10)> a
       1
 
-  Pattern matching works in fuctions:
+  Pattern matching works in functions:
 
       defmodule Lunch do
         def eat("cake"), do: "Wooh!"
