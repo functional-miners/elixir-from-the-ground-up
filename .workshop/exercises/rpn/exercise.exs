@@ -48,7 +48,7 @@ defmodule Workshop.Exercise.Rpn do
     * Negation `_`
 
   As an extra task you can implement the "reducing operators" - they take the whole
-  stack and apply the operation starting with a *neutral elemenet*
+  stack and apply the operation starting with a *neutral element*
   (e.g. `1` for multiplication)
 
   * Reducing operators:
