@@ -1,7 +1,7 @@
 defmodule Workshop.Exercise.CsvCheck do
   use Workshop.Validator
 
-  defp tmp_path do
+  defp tmp_path() do
     case Workshop.locate_root do
       {:ok, root, _exercise} ->
         Path.join(root, "tmp")
@@ -13,7 +13,7 @@ defmodule Workshop.Exercise.CsvCheck do
   end
 
   defmacrop in_tmp(fun) do
-    path = Path.join([tmp_path, "#{__CALLER__.module}", "#{elem(__CALLER__.function, 0)}"])
+    path = Path.join([tmp_path(), "#{__CALLER__.module}", "#{elem(__CALLER__.function, 0)}"])
     quote do
       path = unquote(path)
       File.rm_rf!(path)

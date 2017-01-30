@@ -113,12 +113,24 @@ defmodule Workshop.Exercise.MyEnumCheck do
                    MyEnum.reverse(:lists.seq(1, 10000)))
   end
 
-  verify "do not use :erlang.++/2 function in MyEnum.append/2" do
+  verify "do not use :lists.append/2 in MyEnum.append/2" do
+    should_not_use(:lists, :append, MyEnum.append([1], [2]))
+  end
+
+  verify "do not use :Kernel.++/2 in MyEnum.append/2" do
+    should_not_use(Kernel, :'++', MyEnum.append([1], [2]))
+  end
+
+  verify "do not use :erlang.++/2 in MyEnum.append/2" do
     should_not_use(:erlang, :'++', MyEnum.append([1], [2]))
   end
 
   verify "do not use Kernel.length/1 function in MyEnum.length/1" do
     should_not_use(Kernel, :length, MyEnum.length([1, 2, 3]))
+  end
+
+  verify "do not use :erlang.length/1 function in MyEnum.length/1" do
+    should_not_use(:erlang, :length, MyEnum.length([1, 2, 3]))
   end
 
   verify "do not use Enum.map/2 function in MyEnum.map/2" do
